@@ -8,7 +8,8 @@ const port = 3001;
 
 app.use(bodyParser.urlencoded({extended: true}))
 
-let database = new db()
+let database = new db();
+database.seedData();
 
 app.get('/', (req, res) => {
 
