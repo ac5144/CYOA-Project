@@ -21,7 +21,7 @@ class ListStoriesTest extends Component {
   render() {
     return(
       <div className="ListStoriesTest">
-        {this.state.stories.length < 1 ? "There are no stories" : this.state.stories.map(story => <div>{`${story.title} by ${story.author}`}</div>)}
+        {this.state.stories.length < 1 ? "There are no stories" : this.state.stories.map((story, key) => <div key={key}>{`${story.title} by ${story.author}`}</div>)}
       </div>
     )
   }

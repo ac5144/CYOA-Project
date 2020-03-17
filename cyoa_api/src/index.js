@@ -7,6 +7,7 @@ var app = express();
 const port = 3001;
 
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json());
 
 let database = new db();
 database.seedData();
@@ -23,8 +24,7 @@ app.get('/stories', (req, res) => {
 
 app.post('/stories', (req, res) => {
 
-  database.addNewStory(req.body);
-  res.send("This is the post route");
+    database.addNewStory(req.body);
 })
 
 app.put('/stories/:storyId', (req, res) => {
