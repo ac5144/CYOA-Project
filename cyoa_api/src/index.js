@@ -1,7 +1,7 @@
 var express = require('express'),
     bodyParser = require('body-parser')
 
-var db = require('./db');
+var db = require('./models');
 
 var app = express();
 const port = 3001;
@@ -9,22 +9,29 @@ const port = 3001;
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 
-let database = new db();
-database.seedData();
-
 app.get('/', (req, res) => {
 
-  res.send("This is the home page")
+  res.send("This is the home page");
 })
 
 app.get('/stories', (req, res) => {
-
-  res.send(database.getStories());
+    db.Story.find({})
+        .then(stories => {
+            res.json(stories);
+        })
+        .catch(err => {
+            console.log(stories);
+        })
 })
 
 app.post('/stories', (req, res) => {
-
-    database.addNewStory(req.body);
+    db.Story.create(req.body)
+        .then(newStory => {
+            res.status(201).json(newStory);
+        })
+        .catch(err => {
+            console.log(err);
+        })
 })
 
 app.put('/stories/:storyId', (req, res) => {

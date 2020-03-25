@@ -18,7 +18,7 @@ class CreateStoryTest extends Component {
   handleTitleChange(e) {
       this.setState({
           title: e.target.value
-      });
+      })
   }
 
   handleAuthorChange(e) {
@@ -28,16 +28,12 @@ class CreateStoryTest extends Component {
   }
 
   onSubmit() {
-      console.log(this.state);
       fetch('/stories', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-              title: this.state.title,
-              author: this.state.author
-          })
+          body: JSON.stringify(this.state)
       })
   }
 
@@ -57,7 +53,7 @@ class CreateStoryTest extends Component {
           </div>
           <div>
             <label>First Section Title</label>
-            <input type="text" />
+            <input type="text"/>
           </div>
           <div>
             <label>Section Content</label>
