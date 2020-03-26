@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/stories', (req, res) => {
-    db.Story.find({})
+    db.Story.find()
         .then(stories => {
             res.json(stories);
         })

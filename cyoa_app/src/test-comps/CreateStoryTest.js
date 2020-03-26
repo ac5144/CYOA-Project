@@ -41,27 +41,26 @@ class CreateStoryTest extends Component {
     return(
       <div className="CreateStoryTest">
         <h1>Create a New Story</h1>
-
+        <hr/>
         <form onSubmit={this.onSubmit}>
-          <div>
-            <label>Story Title</label>
-            <input type="text" value={this.state.title} onChange={this.handleTitleChange} />
-          </div>
-          <div>
-            <label>Author</label>
-            <input type="text" value={this.state.author} onChange={this.handleAuthorChange} />
-          </div>
-          <div>
-            <label>First Section Title</label>
-            <input type="text"/>
-          </div>
-          <div>
-            <label>Section Content</label>
-            <textarea />
-          </div>
-          <input type="submit" value="Submit" />
+            <div className="form-group">
+                <label for="storyTitleInput">Story Title</label>
+                <input type="text" className="form-control" id="storyTitleInput" value={this.state.title} onChange={this.handleTitleChange} />
+            </div>
+            <div className="form-group">
+                <label for="storyAuthorInput">Author</label>
+                <input type="text" className="form-control" id="storyAuthorInput" value={this.state.author} onChange={this.handleAuthorChange} />
+            </div>
+            <div className="form-group">
+                <label for="sectionTitleInput">First Section Title</label>
+                <input type="text" className="form-control" id="sectionTitleInput"/>
+            </div>
+            <div className="form-group">
+                <label for="sectionContentInput">Section Content</label>
+                <textarea className="form-control" id="sectionContentInput" rows="10"/>
+            </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
-
       </div>
     );
   }
