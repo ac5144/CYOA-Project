@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class ListStoriesTest extends Component {
 
@@ -28,7 +29,7 @@ class ListStoriesTest extends Component {
                         ? "There are no stories"
                         : this.state.stories.map((story, key) =>
                             <li key={key} className="text-left">
-                                <a href="#">{story.title}</a> by {story.author}
+                                <Link to={`/${story._id}`}>{story.title}</Link> by {story.author}
                             </li>
                     )}
                 </ul>

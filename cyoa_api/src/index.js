@@ -44,6 +44,17 @@ app.delete('/stories/:storyId', (req, res) => {
   res.send("This is the delete route");
 })
 
+app.get('/stories/:storyId', (req, res) => {
+    console.log("Get Section Reached")
+    db.Story.findById(req.params.storyId)
+        .then(story => {
+            res.send(story);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
 app.listen(port, () => {
 
   console.log("Listening on port: " + port);

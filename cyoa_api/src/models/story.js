@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var sectionSchema = require('./sectionSchema')
 
 var storySchema = new mongoose.Schema({
     title: {
@@ -8,11 +9,17 @@ var storySchema = new mongoose.Schema({
     author: {
         type: String
     },
+    rootSection: {
+        type: sectionSchema
+    },
+    childSections: {
+        type: [sectionSchema]
+    },
     created_date: {
         type: Date,
         default: Date.now
     }
-})
+});
 
 var Story = mongoose.model('Story', storySchema);
 
