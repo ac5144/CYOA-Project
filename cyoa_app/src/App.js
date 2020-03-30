@@ -14,7 +14,7 @@ class App extends Component {
         return (
             <div className="App">
                 <NavigationTest />
-                <div className="container">
+                <div className="container content-container">
                     <Switch>
                         <Route path="/add" component={CreateStoryTest} />
                         <Route path="/:storyId" component={ViewStory} />

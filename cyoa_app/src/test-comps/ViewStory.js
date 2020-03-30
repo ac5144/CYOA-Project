@@ -30,6 +30,8 @@ class ViewStory extends Component {
         return(
             <div className="ViewStory">
                 {this.state.story ? <h1>{this.state.story.title}</h1> : <div></div>}
+                <hr />
+                {this.state.story ? <h2>{this.state.story.rootSection.title}</h2> : <div></div>}
                 <div>{this.state.story ? this.state.story.rootSection.content: ''}</div>
             </div>
         )

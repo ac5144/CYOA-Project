@@ -21,18 +21,30 @@ app.get('/stories', (req, res) => {
         })
         .catch(err => {
             console.log(stories);
-        })
-})
+        });
+});
 
 app.post('/stories', (req, res) => {
-    db.Story.create(req.body)
+
+    const rootSection = {
+        title: req.body.sectionTitle,
+        content: req.body.sectionContent
+    }
+
+    const story = {
+        title: req.body.storyTitle,
+        author: req.body.author,
+        rootSection: rootSection
+    }
+
+    db.Story.create(story)
         .then(newStory => {
             res.status(201).json(newStory);
         })
         .catch(err => {
             console.log(err);
-        })
-})
+        });
+});
 
 app.put('/stories/:storyId', (req, res) => {
 

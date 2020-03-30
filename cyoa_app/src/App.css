@@ -1,0 +1,9 @@
+body {
+    background-color: LightGray;
+}
+
+.content-container {
+    height: 100vh;
+    background-color: white;
+    padding: 30px;
+}
