@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+    mongo:
+        image: mongo
+        ports:
+            - "27017:27017"
+        networks:
+            - cyoa_network
+
+    backend:
+        build:
+            context: cyoa_api
+            dockerfile: Dockerfile
+        volumes:
+            - ./cyoa_api:/app
+            - /app/node_modules/
+        ports:
+            - "3001:3001"
+        depends_on:
+            - mongo
+        networks:
+            - cyoa_network
+
+    client:
+        build:
+            context: cyoa_app
+            dockerfile: Dockerfile
+        volumes:
+            - ./cyoa_app:/app
+            - /app/node_modules/
+        links:
+            - backend
+        ports:
+            - "3000:3000"
+        depends_on:
+            - backend
+        networks:
+            - cyoa_network
+
+networks:
+    cyoa_network:
+        driver: bridge

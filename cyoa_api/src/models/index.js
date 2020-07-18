@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.set('debug', true);
-mongoose.connect('mongodb://localhost:27017/cyoa-api', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://mongo:27017/cyoa-api', {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = Promise;
 
 var seed = require('./seed');

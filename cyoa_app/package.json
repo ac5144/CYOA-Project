@@ -11,7 +11,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://backend:3001",
+  "secure": false,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
