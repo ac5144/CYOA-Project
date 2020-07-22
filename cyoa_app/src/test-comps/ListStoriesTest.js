@@ -17,6 +17,9 @@ class ListStoriesTest extends Component {
             .then(stories => {
                 this.setState({stories: stories});
             })
+			.catch(err => {
+				console.log(err);
+			})
     }
 
     render() {

@@ -53,11 +53,18 @@ app.put('/stories/:storyId', (req, res) => {
 
 app.delete('/stories/:storyId', (req, res) => {
 
-  res.send("This is the delete route");
+  db.Story.findByIdAndDelete(req.params.storyId)
+  	.then(() => {
+		res.status(204);
+		res.send("Story deleted");
+	})
+  	.catch(err => {
+		console.log(err);
+	});
 })
 
 app.get('/stories/:storyId', (req, res) => {
-    console.log("Get Section Reached")
+
     db.Story.findById(req.params.storyId)
         .then(story => {
             res.send(story);
