@@ -50,7 +50,7 @@ class CreateStoryTest extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state)
-        })
+        });
     }
 
     render() {

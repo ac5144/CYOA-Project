@@ -12,7 +12,11 @@ class ListStoriesTest extends Component {
     }
 
     componentDidMount() {
-        fetch('/stories')
+        this.getStories();
+    }
+
+	getStories() {
+		fetch('/stories')
             .then(data => data.json())
             .then(stories => {
                 this.setState({stories: stories});
@@ -20,7 +24,17 @@ class ListStoriesTest extends Component {
 			.catch(err => {
 				console.log(err);
 			})
-    }
+	}
+
+	onDeleteStory(storyId) {
+		fetch('/stories/' + storyId, {method: 'DELETE'})
+			.then(() => {
+				this.getStories();
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	}
 
     render() {
         return(
@@ -33,6 +47,8 @@ class ListStoriesTest extends Component {
                         : this.state.stories.map((story, key) =>
                             <li key={key} className="text-left">
                                 <Link to={`/${story._id}`}>{story.title}</Link> by {story.author}
+								<button className="btn btn-danger"
+										onClick={this.onDeleteStory.bind(this, story._id)}>X</button>
                             </li>
                     )}
                 </ul>
