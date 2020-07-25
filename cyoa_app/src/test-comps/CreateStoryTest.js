@@ -43,7 +43,8 @@ class CreateStoryTest extends Component {
         });
     }
 
-    onSubmit() {
+    onSubmit(e) {
+		e.preventDefault();
         fetch('/stories', {
             method: 'POST',
             headers: {
